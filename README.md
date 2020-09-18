@@ -18,3 +18,7 @@ The interface should implement a grid system (similar to Bootstrap).
 I chose to use Ant-Design, a well-documented library of interface components provided to realize this project. 
 
 I chose to go further by integrating other functionalities.
+
+### Wireframe 
+
+![Wireframe](public/assets/wireframe.png)
