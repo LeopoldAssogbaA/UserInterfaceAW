@@ -5,24 +5,32 @@ import {
   SolutionOutlined,
   TeamOutlined,
   NotificationOutlined,
-  UserAddOutlined
+  UserAddOutlined,
+  HomeOutlined
 } from '@ant-design/icons';
 
 import './index.less'
+import { useHistory } from 'react-router-dom';
 
 const { SubMenu } = Menu;
 
 const RightMenu = () => {
+  const history = useHistory();
 
   return (
     <div className="menuContainer">
       <Menu
-        defaultSelectedKeys={['1']}
+        defaultSelectedKeys={['0']}
         defaultOpenKeys={['sub1']}
         mode="inline"
         theme="light"
       >
-        <Menu.Item key="1" icon={<UserAddOutlined />}>
+        <Menu.Item key="0" icon={<HomeOutlined />} onClick={() => history.push("/")}>
+          Accueil
+        </Menu.Item>
+        <Menu.Item key="1" icon={<UserAddOutlined />} onClick={() => {
+          history.push("/registration");
+        }}>
           Nouveau patient
         </Menu.Item>
         <Menu.Item key="2" icon={<TeamOutlined />}>

@@ -1,39 +1,19 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { Route, Switch, useHistory } from 'react-router-dom';
-import { Button, Col, Input, Row, Form, Radio } from 'antd';
+import { Button, Col, Row } from 'antd';
 
 import Header from './components/Header';
 import RightMenu from './components/Menu';
-import StepRender from './components/Steps';
 
 import './App.less';
+import RegistrationForm from './components/Registration';
 
 
 const App = () => {
   const history = useHistory();
-  const [stepIndex, setStepIndex] = useState(null);
-  const [userDatas, setUserDatas] = useState(null);
 
-  const signUp = () => {
-    setStepIndex(0);
-    history.push("/name");
-  };
-
-  // Form
-
-  const onFinish = values => {
-    console.log('Success:', values);
-    setStepIndex(1);
-    history.push("/title");
-  };
-
-  const onFinishFailed = errorInfo => {
-    console.log('Failed:', errorInfo);
-  };
-
-  // TODO: Enhance navigation and variables
   // TODO: Add form initValues 
-  // TODO: Dispatch Forms steps intos components
+  // TODO: Enable item menu active with path
 
   return (
     <div className="app">
@@ -46,63 +26,16 @@ const App = () => {
             <RightMenu />
           </Col>
           <Col span={18}>
-            {stepIndex !== null &&
-              <StepRender stepIndex={stepIndex} />
-            }
             <Row>
               <Col span={16} offset={4}>
                 <Switch>
                   <Route exact path="/">
-                    <Button onClick={signUp}>Ajouter un nouveau patient</Button>
+                    <Button onClick={() => {
+                      history.push("/registration")
+                    }}>Ajouter un nouveau patient</Button>
                   </Route>
-                  <Route exact path="/name">
-                    <Form
-                      initialValues={{ remember: true }}
-                      onFinish={onFinish}
-                      onFinishFailed={onFinishFailed}
-                    >
-                      <Form.Item
-                        label="Prénom"
-                        name="firstName"
-                        rules={[{ required: true, message: 'Please input your username!' }]}
-                      >
-                        <Input />
-                      </Form.Item>
-                      <Form.Item
-                        label="Nom"
-                        name="lastName"
-                        rules={[{ required: true, message: 'Please input your username!' }]}
-                      >
-                        <Input />
-                      </Form.Item>
-                      <Button type="primary" onClick={onFinish}>
-                        Suivant
-                      </Button>
-                    </Form>
-                  </Route>
-                  <Route exact path="/title">
-                    <Form
-                      initialValues={{ remember: true }}
-                      onFinish={onFinish}
-                      onFinishFailed={onFinishFailed}
-                    >
-                      <Form.Item
-                        label="Prénom"
-                        name="firstName"
-                        rules={[{ required: true, message: 'Please input your username!' }]}
-                      >
-                        <Radio.Group defaultValue="m" size="large">
-                          <Radio.Button value="m">Homme</Radio.Button>
-                          <Radio.Button value="f">Femme</Radio.Button>
-                        </Radio.Group>
-                      </Form.Item>
-                      <Button type="primary" onClick={() => {setStepIndex(2)}}>
-                        Suivant
-                      </Button>
-                    </Form>
-                  </Route>
-                  <Route exact path="/end">
-
+                  <Route exact path={`/registration`}>
+                    <RegistrationForm />
                   </Route>
                 </Switch>
               </Col>

@@ -13,9 +13,9 @@ const StepRender = ({ stepIndex }) => {
       <Row>
         <Col span={20} offset={2}>
           <Steps size="small" current={stepIndex}>
-            <Step title="Nom et Prénom" />
+            <Step title="Nom" />
             <Step title="Genre" />
-            <Step title="Terminé" />
+            <Step title="Confirmation" />
           </Steps>
         </Col>
       </Row>
