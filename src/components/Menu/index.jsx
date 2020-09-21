@@ -33,7 +33,9 @@ const RightMenu = () => {
         }}>
           Nouveau patient
         </Menu.Item>
-        <Menu.Item key="2" icon={<TeamOutlined />}>
+        <Menu.Item key="2" icon={<TeamOutlined />} onClick={() => {
+          history.push("/patientList");
+        }}>
           Liste des patients
         </Menu.Item>
         <Menu.Item key="3" icon={<SolutionOutlined />}>

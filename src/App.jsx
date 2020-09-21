@@ -7,6 +7,8 @@ import RightMenu from './components/Menu';
 
 import './App.less';
 import RegistrationForm from './components/Registration';
+import Home from './components/Home';
+import PatientList from './components/PatientList';
 
 
 const App = () => {
@@ -14,6 +16,7 @@ const App = () => {
 
   // TODO: Add form initValues 
   // TODO: Enable item menu active with path
+
 
   return (
     <div className="app">
@@ -26,20 +29,17 @@ const App = () => {
             <RightMenu />
           </Col>
           <Col span={18}>
-            <Row>
-              <Col span={16} offset={4}>
-                <Switch>
-                  <Route exact path="/">
-                    <Button onClick={() => {
-                      history.push("/registration")
-                    }}>Ajouter un nouveau patient</Button>
-                  </Route>
-                  <Route exact path={`/registration`}>
-                    <RegistrationForm />
-                  </Route>
-                </Switch>
-              </Col>
-            </Row>
+            <Switch>
+              <Route exact path="/">
+                <Home />
+              </Route>
+              <Route exact path={`/registration`}>
+                <RegistrationForm />
+              </Route>
+              <Route exact path={`/patientList`}>
+                <PatientList />
+              </Route>
+            </Switch>
           </Col>
         </Row>
       </main>
