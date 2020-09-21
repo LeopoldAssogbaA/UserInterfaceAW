@@ -1,27 +1,33 @@
-import React from 'react';
-import { Route, Switch, useHistory } from 'react-router-dom';
-import { Button, Col, Row } from 'antd';
+import React, { useState } from 'react';
+import { Route, Switch, /* useHistory */ } from 'react-router-dom';
+import { Col, Row } from 'antd';
 
 import Header from './components/Header';
 import RightMenu from './components/Menu';
-
-import './App.less';
 import RegistrationForm from './components/Registration';
 import Home from './components/Home';
 import PatientList from './components/PatientList';
 
+import PATIENTS from './constants/patients';
+import './App.less';
+
 
 const App = () => {
-  const history = useHistory();
+  // const history = useHistory();
+  const [patients, setPatients] = useState(PATIENTS);
 
-  // TODO: Add form initValues 
   // TODO: Enable item menu active with path
+  // TODO: Enhance display and styles
+  // TODO: Display Patient List in PatientList
 
+  const addNewPatient = newPatient => {
+    setPatients(state => [...state, newPatient]);
+  }
 
   return (
     <div className="app">
       <header className="header">
-        <Header />
+        <Header patients={patients} />
       </header>
       <main className="main">
         <Row>
@@ -34,7 +40,7 @@ const App = () => {
                 <Home />
               </Route>
               <Route exact path={`/registration`}>
-                <RegistrationForm />
+                <RegistrationForm addNewPatient={addNewPatient} />
               </Route>
               <Route exact path={`/patientList`}>
                 <PatientList />

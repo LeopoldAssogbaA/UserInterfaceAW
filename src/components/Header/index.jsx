@@ -6,7 +6,6 @@ import {
   SettingOutlined
 } from '@ant-design/icons';
 
-import PATIENTS from '../../constants/patients';
 import './index.less';
 
 
@@ -30,14 +29,13 @@ const menu = (
   </Menu>
 );
 
-const SearchAuto = () => {
-
-  const patients = PATIENTS.map(item => ({ value: `${item.firstName} ${item.lastName}` }));
+const SearchAuto = ({ patients }) => {
+  const data = patients.map(item => ({ value: `${item.firstName} ${item.lastName}` }));
 
   return (
     <AutoComplete
       style={{ width: 200 }}
-      options={patients}
+      options={data}
       filterOption={(inputValue, option) =>
         option.value.toUpperCase().indexOf(inputValue.toUpperCase()) !== -1
       }
@@ -49,7 +47,7 @@ const SearchAuto = () => {
 
 
 
-const Header = () => {
+const Header = ({ patients }) => {
   return (
     <PageHeader
       className="site-page-header"
@@ -57,7 +55,7 @@ const Header = () => {
       avatar={{ src: '/assets/LogoAW.png' }}
       subTitle="OnBoarding"
       extra={[
-        <SearchAuto className="searchAuto" key="autoComplete" />,
+        <SearchAuto patients={patients} className="searchAuto" key="autoComplete" />,
         <Dropdown overlay={menu} placement="bottomRight" key="menuDropdown">
           <Button>Menu</Button>
         </Dropdown>

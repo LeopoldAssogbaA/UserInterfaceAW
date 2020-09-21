@@ -3,19 +3,19 @@ import React from 'react';
 import { Button } from 'antd';
 
 
-const ConfirmForm = ({ stepBackward, register }) => {
+const ConfirmForm = ({ stepBackward, register, newPatient }) => {
   // const history = useHistory();
 
   return (
-  <div>
-    <p> Voulez-vous confirmer l'enregistrement de "Nouveau Patient"</p>
-    <Button onClick={() => stepBackward()}>
-      Retour
+    <div>
+      <p> Voulez-vous confirmer l'enregistrement du patient <b>{newPatient.firstName && newPatient.lastName && newPatient.title ? newPatient.title + " " + newPatient.firstName + " " + newPatient.lastName : ""}</b>?</p>
+      <Button onClick={() => stepBackward()}>
+        Retour
     </Button>
-    <Button type="primary" onClick={() => register()}>
-      Enregistrer
+      <Button type="primary" onClick={() => register(newPatient)}>
+        Enregistrer
     </Button>
-  </div>
+    </div>
   );
 
 };

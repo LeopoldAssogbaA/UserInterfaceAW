@@ -1,12 +1,16 @@
 import React from 'react';
 import { Button, Form, Radio } from 'antd';
+import { useForm } from 'antd/lib/form/Form';
 
 
-const TitleForm = ({ stepFoward, stepBackward }) => {
+const TitleForm = ({ stepFoward, stepBackward, setPatient, newPatient }) => {
+  const [titleForm] = useForm();
 
-  const onFinish = values => {
-    console.log('Success:', values);
+  const onFinishTitle = values => {
     stepFoward();
+    values.sex === "m"
+      ? setPatient({ ...values, title: "Monsieur" })
+      : setPatient({ ...values, title: "Madame" });
   };
 
   const onFinishFailed = errorInfo => {
@@ -15,27 +19,32 @@ const TitleForm = ({ stepFoward, stepBackward }) => {
 
   return (
     <Form
-    initialValues={{ remember: true }}
-    onFinish={onFinish}
-    onFinishFailed={onFinishFailed}
-  >
-    <Form.Item
-      label="Prénom"
-      name="firstName"
-      rules={[{ required: true, message: 'Please input your username!' }]}
+      form={titleForm}
+      initialValues={{ sex: newPatient.sex ? newPatient.sex : null }}
+      onFinish={onFinishTitle}
+      onFinishFailed={onFinishFailed}
     >
-      <Radio.Group defaultValue="m" size="large">
-        <Radio.Button value="m">Homme</Radio.Button>
-        <Radio.Button value="f">Femme</Radio.Button>
-      </Radio.Group>
-    </Form.Item>
-    <Button onClick={stepBackward}>
-      Retour
-    </Button>
-    <Button type="primary" onClick={onFinish}>
-      Suivant
-    </Button>
-  </Form>
+      <Form.Item
+        label="Genre"
+        name="sex"
+        rules={[{ required: true, message: 'Choisissez un genre.' }]}
+      >
+        <Radio.Group size="large">
+          <Radio.Button value="m">Homme</Radio.Button>
+          <Radio.Button value="f">Femme</Radio.Button>
+        </Radio.Group>
+      </Form.Item>
+      <Form.Item>
+        <Button onClick={stepBackward}>
+          Retour
+      </Button>
+      </Form.Item>
+      <Form.Item>
+        <Button type="primary" onClick={() => titleForm.submit()}>
+          Suivant
+      </Button>
+      </Form.Item>
+    </Form>
   );
 
 };

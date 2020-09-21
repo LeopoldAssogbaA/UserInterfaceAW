@@ -1,13 +1,13 @@
 import React from 'react';
 
-import { useHistory } from 'react-router-dom';
+// import { useHistory } from 'react-router-dom';
 import { Col, Row, List } from 'antd';
 import { ManOutlined } from '@ant-design/icons';
 
 import './index.less';
 
-const PatientList = ({  }) => {
-  const history = useHistory();
+const PatientList = () => {
+  // const history = useHistory();
 
   const data = [
     {
