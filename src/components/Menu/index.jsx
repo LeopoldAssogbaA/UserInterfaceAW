@@ -1,4 +1,6 @@
-import React from 'react';
+import React, { useState } from 'react';
+import { Redirect, useHistory } from 'react-router-dom';
+
 import { Menu } from 'antd';
 import {
   FolderOpenOutlined,
@@ -10,32 +12,31 @@ import {
 } from '@ant-design/icons';
 
 import './index.less'
-import { useHistory } from 'react-router-dom';
 
 const { SubMenu } = Menu;
 
 const RightMenu = () => {
   const history = useHistory();
+  const [path, setPath] = useState(window.location.pathname)
 
+  const redirectTo = (i) => {
+    setPath(i.key)
+    history.push(i.key);
+  }
   return (
     <div className="menuContainer">
       <Menu
-        defaultSelectedKeys={['0']}
-        defaultOpenKeys={['sub1']}
+        selectedKeys={[path]}
         mode="inline"
         theme="light"
       >
-        <Menu.Item key="0" icon={<HomeOutlined />} onClick={() => history.push("/")}>
+        <Menu.Item key="/" icon={<HomeOutlined />} onClick={redirectTo}>
           Accueil
         </Menu.Item>
-        <Menu.Item key="1" icon={<UserAddOutlined />} onClick={() => {
-          history.push("/registration");
-        }}>
+        <Menu.Item key="/registration" icon={<UserAddOutlined />} onClick={redirectTo}>
           Nouveau patient
         </Menu.Item>
-        <Menu.Item key="2" icon={<TeamOutlined />} onClick={() => {
-          history.push("/patientList");
-        }}>
+        <Menu.Item key="/patientList" icon={<TeamOutlined />} onClick={redirectTo}>
           Liste des patients
         </Menu.Item>
         <Menu.Item key="3" icon={<SolutionOutlined />}>
