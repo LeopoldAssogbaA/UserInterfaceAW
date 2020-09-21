@@ -1,28 +1,16 @@
 import React from 'react';
-
 // import { useHistory } from 'react-router-dom';
+
 import { Col, Row, List } from 'antd';
-import { ManOutlined } from '@ant-design/icons';
+import { ManOutlined, WomanOutlined } from '@ant-design/icons';
 
 import './index.less';
+import { Link } from 'react-router-dom';
 
-const PatientList = () => {
+const PatientList = ({ patients }) => {
   // const history = useHistory();
+  
 
-  const data = [
-    {
-      title: 'Ant Design Title 1',
-    },
-    {
-      title: 'Ant Design Title 2',
-    },
-    {
-      title: 'Ant Design Title 3',
-    },
-    {
-      title: 'Ant Design Title 4',
-    },
-  ];
 
   // TODO: import patient & manage Avatar display with sex 
 
@@ -32,13 +20,12 @@ const PatientList = () => {
         <Col span={24}>
           <List
             itemLayout="horizontal"
-            dataSource={data}
-            renderItem={item => (
+            dataSource={patients}
+            renderItem={(item, i) => (
               <List.Item>
                 <List.Item.Meta
-                  avatar={<ManOutlined /> /* <WomanOutlined /> */}
-                  title={<a href="https://ant.design">{item.title}</a>}
-                  description="Ant Design, a design language for background applications, is refined by Ant UED Team"
+                  avatar={ item.sex === "m" ? <ManOutlined /> : <WomanOutlined /> }
+                  title={<Link to={`/patientCard/${i}`}> {item.firstName} {item.lastName} </Link>}
                 />
               </List.Item>
             )}

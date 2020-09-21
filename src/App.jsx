@@ -10,6 +10,7 @@ import PatientList from './components/PatientList';
 
 import PATIENTS from './constants/patients';
 import './App.less';
+import PatientCard from './components/PatientList/Card';
 
 
 const App = () => {
@@ -18,7 +19,6 @@ const App = () => {
 
   // TODO: Enable item menu active with path
   // TODO: Enhance display and styles
-  // TODO: Display Patient List in PatientList
 
   const addNewPatient = newPatient => {
     setPatients(state => [...state, newPatient]);
@@ -43,7 +43,10 @@ const App = () => {
                 <RegistrationForm addNewPatient={addNewPatient} />
               </Route>
               <Route exact path={`/patientList`}>
-                <PatientList />
+                <PatientList patients={patients} />
+              </Route>
+              <Route path={`/patientCard/:index`}>
+                <PatientCard patients={patients} />
               </Route>
             </Switch>
           </Col>

@@ -8,7 +8,7 @@ const ConfirmForm = ({ stepBackward, register, newPatient }) => {
 
   return (
     <div>
-      <p> Voulez-vous confirmer l'enregistrement du patient <b>{newPatient.firstName && newPatient.lastName && newPatient.title ? newPatient.title + " " + newPatient.firstName + " " + newPatient.lastName : ""}</b>?</p>
+      <p> Voulez-vous confirmer l'enregistrement de <b>{newPatient.firstName && newPatient.lastName && newPatient.title ? newPatient.title + " " + newPatient.firstName + " " + newPatient.lastName : ""}</b>?</p>
       <Button onClick={() => stepBackward()}>
         Retour
     </Button>

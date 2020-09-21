@@ -7,6 +7,7 @@ import {
 } from '@ant-design/icons';
 
 import './index.less';
+import { useHistory } from 'react-router-dom';
 
 
 const menu = (
@@ -30,10 +31,19 @@ const menu = (
 );
 
 const SearchAuto = ({ patients }) => {
-  const data = patients.map(item => ({ value: `${item.firstName} ${item.lastName}` }));
+  const history = useHistory();
+  const data = patients.map((item, i) => ({ value: `${item.firstName} ${item.lastName}`}));
 
+  const redirectToPatient = (patient) => {
+    const patientName = patient.split(' ');
+    const patientIndex = patients.findIndex(item => (item.firstName === patientName[0] && item.lastName === patientName[1]))
+    
+    history.push(`/patientCard/${patientIndex}`)
+  };
+  
   return (
     <AutoComplete
+      onSelect={(item) => redirectToPatient(item)}
       style={{ width: 200 }}
       options={data}
       filterOption={(inputValue, option) =>
@@ -44,8 +54,6 @@ const SearchAuto = ({ patients }) => {
     </AutoComplete>
   );
 }
-
-
 
 const Header = ({ patients }) => {
   return (
