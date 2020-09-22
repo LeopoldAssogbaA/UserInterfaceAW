@@ -1,14 +1,9 @@
 import React from 'react';
+import { useHistory } from 'react-router-dom';
 import { Menu, Dropdown, Button, PageHeader, AutoComplete, Input } from 'antd';
-import {
-  UserOutlined,
-  LogoutOutlined,
-  SettingOutlined
-} from '@ant-design/icons';
+import { UserOutlined, LogoutOutlined, SettingOutlined } from '@ant-design/icons';
 
 import './index.less';
-import { useHistory } from 'react-router-dom';
-
 
 const menu = (
   <Menu>

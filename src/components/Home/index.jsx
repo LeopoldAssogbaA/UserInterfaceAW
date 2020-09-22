@@ -1,5 +1,4 @@
 import React from 'react';
-
 import { useHistory } from 'react-router-dom';
 import { Button, Col, Row } from 'antd';
 import { UserAddOutlined, TeamOutlined } from '@ant-design/icons';

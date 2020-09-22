@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Redirect, useHistory } from 'react-router-dom';
+import { useHistory } from 'react-router-dom';
 
 import { Menu } from 'antd';
 import {
@@ -17,16 +17,19 @@ const { SubMenu } = Menu;
 
 const RightMenu = () => {
   const history = useHistory();
-  const [path, setPath] = useState(window.location.pathname)
-
+  const [path, setPath] = useState(window.location.pathname);
+  
+  const cardPath = path.split('/').findIndex( item =>  item === 'patientCard');
+  
   const redirectTo = (i) => {
     setPath(i.key)
     history.push(i.key);
   }
+
   return (
     <div className="menuContainer">
       <Menu
-        selectedKeys={[path]}
+        selectedKeys={[path, cardPath !== -1 && '/patientList']}
         mode="inline"
         theme="light"
       >

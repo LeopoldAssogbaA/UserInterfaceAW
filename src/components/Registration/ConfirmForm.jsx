@@ -1,23 +1,25 @@
 import React from 'react';
-// import { useHistory } from 'react-router-dom';
 import { Button } from 'antd';
 
+import './ConfirmForm.less';
 
 const ConfirmForm = ({ stepBackward, register, newPatient }) => {
-  // const history = useHistory();
 
   return (
-    <div>
-      <p> Voulez-vous confirmer l'enregistrement de <b>{newPatient.firstName && newPatient.lastName && newPatient.title ? newPatient.title + " " + newPatient.firstName + " " + newPatient.lastName : ""}</b>?</p>
-      <Button onClick={() => stepBackward()}>
-        Retour
-    </Button>
-      <Button type="primary" onClick={() => register(newPatient)}>
-        Enregistrer
-    </Button>
+    <div className="confirmContainer">
+      <div>
+        <p> Voulez-vous confirmer l'enregistrement de <b>{newPatient.firstName && newPatient.lastName && newPatient.title ? newPatient.title + " " + newPatient.firstName + " " + newPatient.lastName : ""}</b>?</p>
+      </div>
+      <div>
+        <Button onClick={() => stepBackward()}>
+          Retour
+        </Button>
+        <Button type="primary" onClick={() => register(newPatient)}>
+          Enregistrer
+        </Button>
+      </div>
     </div>
   );
-
 };
 
 export default ConfirmForm;

@@ -24,27 +24,29 @@ const NameForm = ({ stepFoward, setPatient, newPatient }) => {
       }}
       onFinish={onFinish}
       onFinishFailed={onFinishFailed}
-      layout="inline"
-      name="horizontal_login"
+      labelCol={{ span: 4 }}
+      wrapperCol={{ span: 16 }}
     >
-      <Form.Item
-        label="Prénom"
-        name="firstName"
-        rules={[{ required: true, message: 'Merci d\'indiquer le nom du patient ' }]}
-      >
-        <Input />
+      <Form.Item label="Patient" style={{ marginBottom: 0 }}>
+        <Form.Item
+          style={{ display: 'inline-block', width: 'calc(50% - 8px)', paddingLeft: '1em' }}
+          name="firstName"
+          rules={[{ required: true, message: 'Merci d\'indiquer le nom du patient ' }]}
+        >
+          <Input placeholder="Prénom" />
+        </Form.Item>
+        <Form.Item
+          style={{ display: 'inline-block', width: 'calc(50% - 8px)', paddingLeft: '1em' }}
+          name="lastName"
+          rules={[{ required: true, message: 'Merci d\'indiquer le prénom du patient ' }]}
+        >
+          <Input placeholder="Nom" />
+        </Form.Item>
       </Form.Item>
-      <Form.Item
-        label="Nom"
-        name="lastName"
-        rules={[{ required: true, message: 'Merci d\'indiquer le prénom du patient ' }]}
-      >
-        <Input />
-      </Form.Item>
-      <Form.Item>
+      <Form.Item label=" " colon={false} style={{ paddingLeft: '1em' }}>
         <Button type="primary" onClick={() => nameForm.submit()}>
           Suivant
-      </Button>
+    </Button>
       </Form.Item>
     </Form>
   );

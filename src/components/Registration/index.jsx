@@ -4,9 +4,7 @@ import { useHistory } from 'react-router-dom';
 import NameForm from './NameForm';
 import TitleForm from './TitleForm';
 import ConfirmForm from './ConfirmForm';
-
 import StepRender from '../Steps';
-
 
 const RegistrationForm = ({ addNewPatient }) => {
   const history = useHistory();
