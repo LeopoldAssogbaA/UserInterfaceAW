@@ -46,7 +46,7 @@ const NameForm = ({ stepFoward, setPatient, newPatient }) => {
       <Form.Item label=" " colon={false} style={{ paddingLeft: '1em' }}>
         <Button type="primary" onClick={() => nameForm.submit()}>
           Suivant
-    </Button>
+        </Button>
       </Form.Item>
     </Form>
   );

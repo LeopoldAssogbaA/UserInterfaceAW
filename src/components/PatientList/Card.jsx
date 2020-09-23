@@ -18,8 +18,6 @@ const PatientCard = ({ patients }) => {
 
   return (
     <div className="cardContainer">
-      <Row>
-        <Col span={8} offset={10}>
           {currentPatient === undefined
             ?
             <div>Le patient a été suprimé de la liste. Veuillez créer un nouveau patient.</div>
@@ -36,8 +34,6 @@ const PatientCard = ({ patients }) => {
               </p>
             </Card>
           }
-        </Col>
-      </Row>
     </div>
   );
 }
