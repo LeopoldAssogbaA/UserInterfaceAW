@@ -22,3 +22,11 @@ I chose to go further by integrating other functionalities.
 ### Wireframe 
 
 ![Wireframe](public/assets/wireframe.png)
+
+
+### Result 
+
+<img src="public/assets/screenDesktop.png" >
+<img src="public/assets/screenMobile.png" width="360">
+
+
