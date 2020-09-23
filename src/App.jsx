@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { Route, Switch } from 'react-router-dom';
-import { Col, Row } from 'antd';
+import { Col, Row, Grid } from 'antd';
 
 import Header from './components/Header';
 import RightMenu from './components/Menu';
@@ -12,10 +12,12 @@ import PatientCard from './components/PatientList/Card';
 import PATIENTS from './constants/patients';
 import './App.less';
 
+const { useBreakpoint } = Grid;
   // TODO: Manage Responsive layout
 
 const App = () => {
   const [patients, setPatients] = useState(PATIENTS);
+  const screens = useBreakpoint();
   const addNewPatient = newPatient => {
     setPatients(state => [...state, newPatient]);
   }
@@ -27,10 +29,10 @@ const App = () => {
       </header>
       <main className="main">
         <Row>
-          <Col span={6}>
+          <Col span={screens.xs ? 4 : 6}>
             <RightMenu />
           </Col>
-          <Col span={18}>
+          <Col span={screens.xs ? 20 : 18}>
             <Switch>
               <Route exact path="/">
                 <Home />

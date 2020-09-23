@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react';
 import { useHistory, useParams } from 'react-router-dom';
-import { Col, Row, Card } from 'antd';
+import { Card } from 'antd';
 
 import './Card.less';
 

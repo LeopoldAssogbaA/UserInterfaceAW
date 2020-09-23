@@ -21,7 +21,7 @@ const Home = () => {
             <h2>Bienvenue sur le site d'AudioWizard!</h2>
           </div>
         </Col>
-        <Col span={12} className="btnContainer">
+        <Col xs={{span:20, offset:2}} sm={{span: 12, offset: 0}} className="btnContainer">
           <Button
             icon={<UserAddOutlined />}
             type="primary"
@@ -32,7 +32,7 @@ const Home = () => {
             Ajouter un nouveau patient
           </Button>
         </Col>
-        <Col span={12} className="btnContainer">
+        <Col xs={{span:20, offset:2}} sm={{span: 12, offset: 0}} className="btnContainer">
           <Button
             icon={<TeamOutlined />}
             onClick={() => {

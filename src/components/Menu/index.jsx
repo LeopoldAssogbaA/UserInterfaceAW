@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { useHistory } from 'react-router-dom';
 
-import { Menu } from 'antd';
+import { Menu, Grid } from 'antd';
 import {
   FolderOpenOutlined,
   SolutionOutlined,
@@ -14,10 +14,13 @@ import {
 import './index.less'
 
 const { SubMenu } = Menu;
+const { useBreakpoint } = Grid;
+
 
 const RightMenu = () => {
   const history = useHistory();
   const [path, setPath] = useState(window.location.pathname);
+  const screens = useBreakpoint();
   
   const cardPath = path.split('/').findIndex( item =>  item === 'patientCard');
   
@@ -25,13 +28,14 @@ const RightMenu = () => {
     setPath(i.key)
     history.push(i.key);
   }
-
+  
   return (
     <div className="menuContainer">
       <Menu
         selectedKeys={[path, cardPath !== -1 && '/patientList']}
         mode="inline"
         theme="light"
+        inlineCollapsed={screens.xs ? true : false}
       >
         <Menu.Item key="/" icon={<HomeOutlined />} onClick={redirectTo}>
           Accueil
