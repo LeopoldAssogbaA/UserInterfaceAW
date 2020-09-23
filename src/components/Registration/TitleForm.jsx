@@ -29,13 +29,14 @@ const TitleForm = ({ stepFoward, stepBackward, setPatient, newPatient }) => {
         label="Genre"
         name="sex"
         rules={[{ required: true, message: 'Choisissez un genre.' }]}
+        wrapperCol={{ sm: { offset: 0}, xs: {span: 14, offset: 4 } }}
       >
         <Radio.Group size="large">
           <Radio.Button value="m">Homme</Radio.Button>
           <Radio.Button value="f">Femme</Radio.Button>
         </Radio.Group>
       </Form.Item>
-      <Form.Item  wrapperCol={{ span: 14, offset: 10 }}>
+      <Form.Item  wrapperCol={{ sm: {span: 14, offset: 10}, xs: {span: 14, offset: 4 } }}>
         <Button onClick={stepBackward} style={{ marginRight: '1.55em'}}>
             Retour
         </Button>

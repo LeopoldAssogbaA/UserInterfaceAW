@@ -13,7 +13,7 @@ const StepRender = ({ stepIndex }) => {
   return (
     <div className="stepContainer">
       <Row>
-        <Col span={20} offset={2}>
+        <Col span={screens.xs ? 12 : 20} offset={screens.xs ? 8 : 2}>
           <Steps size="small" current={stepIndex} direction={screens.xs? "vertical" : "horizontal"}>
             <Step title="Nom" />
             <Step title="Genre" />

@@ -43,11 +43,11 @@ const NameForm = ({ stepFoward, setPatient, newPatient }) => {
           <Input placeholder="Nom" />
         </Form.Item>
       </Form.Item>
-      <Form.Item label=" " colon={false} style={{ paddingLeft: '1em' }}>
+      <div style={{justifyContent: 'center', display:'flex'}}>
         <Button type="primary" onClick={() => nameForm.submit()}>
           Suivant
         </Button>
-      </Form.Item>
+      </div>
     </Form>
   );
 
